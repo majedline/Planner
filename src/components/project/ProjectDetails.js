@@ -7,34 +7,37 @@ import { Redirect } from 'react-router-dom';
 const ProjectDetails = (props) => {
 
     const { project, auth } = props;
+    console.log("Project Details", auth.uid);
 
     if (!auth.uid) {
-        return (<Redirect to='./signin' />);
-    }
+        console.log("here");
+        return (<Redirect to='/signin' />);
+        
+    } else {
 
-
-    if (project) {
-        return (
-            <div className="container section project-details">
-                <div className="card z-depth-0">
-                    <div className="card-content">
-                        <span className="card-title">{project.title}</span>
-                        <p>(Project ID: {project.id})</p>
-                        <p> {project.content}</p>
-                    </div>
-                    <div className="card-action grey lighten-4 grey-text">
-                        <div>{project.authorFirstName} {project.authorLastName}</div>
-                        <div> sept something</div>
+        if (project) {
+            return (
+                <div className="container section project-details">
+                    <div className="card z-depth-0">
+                        <div className="card-content">
+                            <span className="card-title">{project.title}</span>
+                            <p>(Project ID: {project.id})</p>
+                            <p> {project.content}</p>
+                        </div>
+                        <div className="card-action grey lighten-4 grey-text">
+                            <div>{project.authorFirstName} {project.authorLastName}</div>
+                            <div> sept something</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        );
-    } else {
-        return (
-            <div className="container center">
-                Loading Project ...
-            </div>
-        );
+            );
+        } else {
+            return (
+                <div className="container center">
+                    Loading Project ...
+                </div>
+            );
+        }
     }
 }
 
