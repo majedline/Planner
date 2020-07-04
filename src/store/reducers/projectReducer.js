@@ -20,7 +20,6 @@ const projectReducer = (state = initState, action) => {
             return state;
 
         default:
-            console.log("default value", action);
             return state;
 
     }
