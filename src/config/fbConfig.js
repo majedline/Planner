@@ -17,7 +17,8 @@ var config = {
 };
 // Initialize Firebase
 firebase.initializeApp(config);
-firebase.firestore().settings({ timestampsInSnapshots: true });
+// fixed bug: @firebase/firestore: Firestore (7.15.5): The setting 'timestampsInSnapshots: true' is no longer required and should be removed removed .settings({ timestampsInSnapshots: true})
+firebase.firestore();
 // firebase.analytics();
 
 export default firebase;
