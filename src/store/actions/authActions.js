@@ -34,21 +34,16 @@ export const signUp = (newUser) => {
             newUser.email,
             newUser.password
 
-        ).then((creatingNewUserServerResponse) => {
-
-            const usersCollection = firestore.collection('user')
-            // create a new doc with that id
-            const document = usersCollection.doc(creatingNewUserServerResponse.user.uid);
-            // store the data insite the document
-            document.set({
+        ).then(resp => {
+            return firestore.collection('users').doc(resp.user.uid).set({
                 firstName: newUser.firstName,
                 lastName: newUser.lastName,
                 initials: newUser.firstName[0] + newUser.lastName[0]
-            })
+            });
         }).then(() => {
             dispatch({ type: 'SIGNUP_SUCCESS' });
-        }).catch((error) => {
-            dispatch({ type: 'SIGNUP_ERROR', err: error});
-        })
+        }).catch((err) => {
+            dispatch({ type: 'SIGNUP_ERROR', err });
+        });
     };
 }

@@ -15,8 +15,16 @@ import fbConfig from './config/fbConfig';
 const store = createStore(rootReducer,
   compose(
     applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
-    reactReduxFirebase(fbConfig, { attachAuthIsReady: true }), // redux binding for firebase
+   
+    //useFirestoreForProfile: Want the firebase reducer to use the firestore database to sync on the provile object
+    // userProfile: 'users': says which table to sync to. Note tha the user was created in the authAction in the SignUp. firestore.collection('user')
+    // (i.e. userProfile: 'users' says what the firebase root where user profiles are stored
+    // attachAuthIsReady: true: attaches auth is ready promise to store
+    reactReduxFirebase(fbConfig, { userProfile: 'users', useFirestoreForProfile: true, attachAuthIsReady: true }),// redux binding for firebase
+
     reduxFirestore(fbConfig) // redux bindings for firestore
+
+
   )
 );
 
