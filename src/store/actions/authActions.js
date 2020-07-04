@@ -44,11 +44,11 @@ export const signUp = (newUser) => {
                 firstName: newUser.firstName,
                 lastName: newUser.lastName,
                 initials: newUser.firstName[0] + newUser.lastName[0]
-            }).then(() => {
-                dispatch({ type: 'SIGNUP_SUCCESS' });
-            }).catch((error) => {
-                dispatch({ type: 'SIGNUP_ERROR', err: error});
             })
+        }).then(() => {
+            dispatch({ type: 'SIGNUP_SUCCESS' });
+        }).catch((error) => {
+            dispatch({ type: 'SIGNUP_ERROR', err: error});
         })
     };
 }
