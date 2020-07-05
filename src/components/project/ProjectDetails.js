@@ -20,12 +20,11 @@ const ProjectDetails = (props) => {
                     <div className="card z-depth-0">
                         <div className="card-content">
                             <span className="card-title">{project.title}</span>
-                            <p>(Project ID: {project.id})</p>
-                            <p> {project.content}</p>
+                            <p>{project.content}</p>
                         </div>
                         <div className="card-action grey lighten-4 grey-text">
-                            <div>{project.authorFirstName} {project.authorLastName}</div>
-                            <div><p className="grey-text">{moment(project.createdAt.toDate()).calendar()}</p></div>
+                            <div>Created by: {project.authorFirstName} {project.authorLastName}</div>
+                            <div>Created on: {moment(project.createdAt.toDate()).calendar()}</div>
                         </div>
                     </div>
                 </div>
