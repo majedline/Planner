@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom';
+import moment from 'moment';
 
 const ProjectDetails = (props) => {
 
@@ -10,7 +11,7 @@ const ProjectDetails = (props) => {
 
     if (!auth.uid) {
         return (<Redirect to='/signin' />);
-        
+
     } else {
 
         if (project) {
@@ -24,7 +25,7 @@ const ProjectDetails = (props) => {
                         </div>
                         <div className="card-action grey lighten-4 grey-text">
                             <div>{project.authorFirstName} {project.authorLastName}</div>
-                            <div> sept something</div>
+                            <div><p className="grey-text">{moment(project.createdAt.toDate()).calendar()}</p></div>
                         </div>
                     </div>
                 </div>
